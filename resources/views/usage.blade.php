@@ -1,6 +1,13 @@
+@extends('layout')
+
+@section('content')
+
+    <main id="main">
+
 <!-- ======= usage Section ======= -->
-<section id="usage" class="usage">
+<section id="usage" class="usage" style="margin-left: 15%">
     <div class="container">
+
 
         <div class="section-title">
             <h2>send a Crawler</h2>
@@ -11,22 +18,25 @@
 
         <div class="row" data-aos="fade-in">
 
-            <div class="col-lg-5">
-                <form>
+            <div class="col-md-9">
+
+                @include('error')
+                <form method="post" action="">
+                    {{ csrf_field()  }}
+
                     <div class="row mb-3">
                         <label for="id" class="col-sm-2 col-form-label">IMDb-ID</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="id">
+                            <input type="text" class="form-control" name="id" id="id">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="id" class="col-sm-2 col-form-label">IMDb-ID</label>
+                        <label for="type" class="col-sm-2 col-form-label">Type</label>
                         <div class="col-sm-10">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Select a data type</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select name="type" class="form-select" aria-label="Default select example">
+
+                                <option selected value="series">Series</option>
+
                             </select>
                         </div>
                     </div>
@@ -34,7 +44,7 @@
 
                     <div class="d-grid gap-2 col-6 mx-auto">
 
-                        <button class="btn btn-secondary" type="button">send</button>
+                        <button class="btn btn-secondary" type="submit">send</button>
                     </div>
                 </form>
 
@@ -47,3 +57,6 @@
 
     </div>
 </section><!-- End usage Section -->
+    </main>
+
+@endsection

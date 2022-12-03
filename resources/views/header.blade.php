@@ -20,10 +20,10 @@
 
         <nav id="navbar" class="nav-menu navbar">
             <ul>
-                <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-                <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-                <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Used Tools</span></a></li>
-                <li><a href="#usage" class="nav-link scrollto"><i class="bx bx-sitemap"></i> <span>Usage</span></a></li>
+                <li><a href="{{route('mainPage')}}#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+                <li><a href="{{route('mainPage')}}#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+                <li><a href="{{route('mainPage')}}#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Used Tools</span></a></li>
+                <li><a href="{{route('usage')}}" class="nav-link scrollto"><i class="bx bx-sitemap"></i> <span>Usage</span></a></li>
             </ul>
         </nav><!-- .nav-menu -->
     </div>

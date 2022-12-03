@@ -19,4 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('App\Http\Controllers')->group(function (){
    Route::get('/','HomeController@home')->name('mainPage');
+   Route::get('/usage','imdbRequestController@usage')->name('usage');
+    Route::post('/usage','imdbRequestController@Fetch')->name('Fetch');
+
 });
