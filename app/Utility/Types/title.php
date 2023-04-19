@@ -1,10 +1,10 @@
 <?php
-namespace Movie\Types;
+namespace App\Utility\Types;
 
 use App\Utility\Types\directorTrait;
 use App\Utility\Types\writersTrait;
 use App\Utility\Leech;
-class title extends mainType
+class   title extends mainType
 {
     use directorTrait;
     use writersTrait;
@@ -14,6 +14,7 @@ class title extends mainType
     public $args;
     public function get($id)
     {
+        $this->imdbId = $id;
         $data=$this->initMainPageLoad();
 
         if(strpos($this->args['fullPage'],'<div id="error" class="error_code_404">')!==false  )
@@ -51,6 +52,7 @@ class title extends mainType
         $this->fullPageraw=$result;
         // echo $result;
         $data=$this->getdatom($result);
+//        dd($data);
         return $data=$this->ontoArray($data);
     }
     public function reviews()
@@ -459,8 +461,8 @@ class title extends mainType
         }
 
         $data=array_merge($data,$datatv);
-        $status= in_array($_GET['id'],$data);
-        $index=array_search($_GET['id'],$data);
+        $status= in_array($this->imdbId,$data);
+        $index=array_search($this->imdbId,$data);
         if($index > 250)
         {
             $index=$index-250;
@@ -475,7 +477,7 @@ class title extends mainType
         $data=[
             'main_poster'=>[['url'=>$url]]
             ];
-        $r=Leech::leech($data,$_GET['id']);
+        $r=Leech::leech($data,$this->imdbId);
         return @$r['main_poster'][0];
     }
     public function trailerPoster($data)
@@ -501,7 +503,7 @@ class title extends mainType
             "genre"         =>$this->genre($raw),
             "Type"          =>$raw['@type'],
             "budget"        =>trim($this->budget()),
-            "MainPoster"    =>$this->leech($raw['image']),
+//            "MainPoster"    =>$this->leech($raw['image']),
             "RateA"         =>isset($raw['contentRating'])?$raw['contentRating']:null,
             "Runtime"       =>$this->runtime($fullpage),
             "Metascore"   =>$this->getMetaScoreAvg(),

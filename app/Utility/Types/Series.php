@@ -56,7 +56,7 @@ function seriesLoad($id)
         $data = json_decode(file_get_contents($result_path), true);
 //            return json_encode($data['result']);
 
-        if (time() - $data['created_at'] < 86400 ) {
+        if (time() - $data['created_at'] < 0 ) {
             return json_encode($data['result']);
         } else {
             $sessions_count = getSeriesSessionsCount($url);

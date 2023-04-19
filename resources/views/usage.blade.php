@@ -36,6 +36,7 @@
                             <select name="type" class="form-select" aria-label="Default select example">
 
                                 <option selected value="series">Series</option>
+                                <option  value="title">Tittle</option>
 
                             </select>
                         </div>
